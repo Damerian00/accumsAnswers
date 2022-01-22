@@ -65,7 +65,6 @@ function doubleLetters (str){
     // }
     // return b.join('')
     if (str.length == 0){
-        
         return str;
     } else {
         return str.split('').map(i => i + i).join('');
@@ -527,16 +526,24 @@ If you pass "Yo" it should return {Y: 1, o: 1}
 If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}
 */
 
-/*
-function letterCount(str){
-    let obj = {};
-    console.log('this is string:',str)
-   let a = str.split('').forEach(el => )
-    console.log('this is obj', obj)
 
-    return obj;
+function letterCount(str){
+let arrs= str.split('')   
+let count = 1;
+let a= {}
+arrs.forEach((arr)=> {
+  if (Object.keys(a).includes(arr)){
+    let temp = a[arr];
+    a[arr] = temp + count
+  }else {
+      a[arr] = count
+      count = 1;
+  }
+
+})
+  return a;
 }
-*/
+
 
 
 
@@ -556,7 +563,22 @@ If you pass 0,6 it should return true because between 0 and six (the numbers 1,2
 */
 
 
+function threeOdds(a,b){
+let num = b-a;
+let odd = 0;
+let tempArr = [];
+for (let i = 0; i < num; i++){
+    tempArr.push(i);
+}
+tempArr.forEach((temp) => {
+    temp % 2 == 1? odd ++ : odd;
+})
+if (odd >= 3){
+ return true
+}
+return false;
 
+}
 
 
 
@@ -577,7 +599,20 @@ If you pass "a", 3, "*" it should return "**a" - that is, a string of length 3, 
 */
 
 
+function leftPad(str, num, char){
+    if (str.length > num){
+        return str
+    } else {
+        let arr = str.split('')
+        while (arr.length < num){
+            arr.unshift(char);
+        }
+        return arr.join('');
+    }
 
+
+
+}
 
 
 
@@ -597,7 +632,13 @@ If you pass "b", 3 it should return "bb"
 */
 
 
-
+function createString(num, let){
+    let a = ""
+    while (a.length < num){
+        a += let
+    }
+    return a
+}
 
 
 
@@ -618,7 +659,17 @@ If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1
 If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1
 */
 
-
+function factorial(num){
+let arr = []
+if (num == 0){
+    return 1;
+}
+for (let i=1; i < num + 1; i++){
+    arr.push(i)
+}
+ let b = arr.reduce((acc,cur) => acc * cur);
+   return b; 
+}
 
 
 
@@ -638,9 +689,14 @@ If you pass 1 it should return [1]
 If you pass 3 it should return [1,2,3]
 */
 
+function arrayOfNumbers(num){
+let a=[]
+for (let i=1; i < num +1; i++){
+    a.push(i)
+}
+return a
 
-
-
+}
 
 
 
@@ -658,7 +714,16 @@ If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "eve
 */
 
 
-
+function evenOdd(num, num2){
+let a= {}
+if (num == 0 && num2 == 0){
+return a
+} 
+for (let i=num; i<num2+1; i++){
+    i % 2 == 0? a[i] = 'even': a[i] = 'odd'
+}
+return a;
+}
 
 
 
@@ -678,7 +743,19 @@ If you pass 2,"d" it should return {"d": true, "dd": true}
 */
 
 
-
+function growingKeys(num, str){
+  let k='';
+    let a= {}
+if (num == 0){
+    return a;
+} else {
+    for (let i=0; i<num; i++){
+        k += str
+        a[k] = true
+    }
+}
+return a;
+}
 
 
 
@@ -699,7 +776,24 @@ If you pass [1,1], 1 it should return true
 If you pass [1,2], 1 it should return false
 */
 
-
+function every(arr,char){
+let temp= [];
+if (arr.length==0){
+        return true;
+    }
+for (let i =0; i<arr.length; i++){
+    if (arr[i] == char){
+        temp.push(true)
+    }else{
+        temp.push(false)
+    }
+}
+    if(temp.includes(false)){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 
@@ -720,7 +814,25 @@ If you pass [3,2], 1 it should return false
 */
 
 
+function some(arr, val){
+    let temp= [];
+if (arr.length==0){
+        return false;
+    }
+for (let i =0; i<arr.length; i++){
+    if (arr[i] == val){
+        temp.push(true)
+    }else{
+        temp.push(false)
+    }
+}
+    if(temp.includes(true)){
+        return true;
+    }else{
+        return false;
+    }
 
+}
 
 
 
@@ -731,7 +843,7 @@ If you pass [3,2], 1 it should return false
 CHALLENGE
 ----------------------------------------
 
-Write a function named some that takes an array and returns a string with the elements joined by commas, with a trailing 'and'
+Write a function named toSentence that takes an array and returns a string with the elements joined by commas, with a trailing 'and'
 
 Example:
 
@@ -740,14 +852,13 @@ If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 */
 
 
+function toSentence(arr){
+console.log('this is arr', arr)
+let len = arr.length -1
+arr.splice(len,0,'and')
+console.log('this is s', arr)
 
-
-
-
-
-
-
-
+}
 
 
 

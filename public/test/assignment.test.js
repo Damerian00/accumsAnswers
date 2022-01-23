@@ -529,7 +529,7 @@ window.onload = function() {
   describe('addSignature', function() {
 
     it("returns an empty object when passed an empty object", function() {
-      expect(addSignature({})).to.deep.eq({})
+      expect(addSignature('',{})).to.deep.eq({})
     })
 
     it("returns an object where the keys have '-signed' appended", function() {

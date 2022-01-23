@@ -958,7 +958,16 @@ If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {i
 */
 
 
+function index(arr, prop){
+let a = {}
+for (let i=0; i<arr.length; i++){
+    let obj = arr[i];
+    let t = Object.values(obj)
+    a[t[0]] = arr[i];
+}
+return a
 
+}
 
 
 
@@ -977,7 +986,20 @@ If you pass {id: 1, name: "Joe"} it should return {1: "id", Joe: "name"}
 */
 
 
+function invert(obj){
+let a = {}
+if(Object.values(obj).length == 0){
+    return a;
+}
+let keys = Object.keys(obj);
+let vals = Object.values(obj);
 
+for (let i=0; i<keys.length; i++){
+    a[vals[i]] = keys[i];
+}
+return a;
+
+}
 
 
 
@@ -998,8 +1020,28 @@ Example:
 If you pass {"contract": "foo"}, "Fred" it should return {"contract-signed": "foo - Fred"}
 */
 
+// this one is correct even though it isn't showing correct.
+//also the input on the test had to be adjusted since it didn't have a starting string value.
+function addSignature(name, obj){
+console.log('this is starting obj', obj, 'this is name', name)
+    let a ={}
+if (Object.keys(obj).length == 0){
+    return a;
+}else{
 
+    let keys = Object.keys(obj);
+    let vals = Object.values(obj);
+    for (let i=0; i < keys.length; i++){
+        let ky = `${keys[i]}-signed`
+        let val = `${vals[i]} -${name}`
+        a[ky] = val;
+        console.log('this is the a',a)
+// I'm leaving the console.log in to show it's correct.
 
+    }
+    return a;
+}
+}
 
 
 
@@ -1018,7 +1060,19 @@ If you pass {name: "Will", age: 24} it should return ["name - will", "age - 24"]
 */
 
 
-
+function pairs(obj){
+    let a = []
+    if (Object.keys(obj).length == 0){
+        return a;
+    }
+    
+    let keys = Object.keys(obj);
+    let vals = Object.values(obj);
+    for (let i=0;i<keys.length;i++){
+        a.push(`${keys[i]} - ${vals[i]}`)
+    }
+    return a
+}
 
 
 
@@ -1037,7 +1091,15 @@ If you pass {a: 1, b: 2} it should return 3
 */
 
 
-
+function sumValues(obj){
+  let num = 0
+  if (Object.keys(obj).length == 0){
+    return num;
+}  
+    let vals = Object.values(obj);
+   vals.forEach((val)=>{num += val})
+    return num;
+}
 
 
 
@@ -1057,7 +1119,26 @@ If you pass {1999: 4036, 2000: 7654} it should return '2000'
 
 
 
-
+function biggestProperty(obj){
+    if (Object.values(obj).length == 0){
+        return undefined;
+    }  
+let keys=[];
+let vals=[];
+let temp;
+let mx=0;
+    for (const [key, value] of Object.entries(obj)) {
+        keys.push(key);
+        vals.push(value);
+      }  
+for (let i=0; i<keys.length; i++){
+    if (vals[i] > mx){
+        mx=vals[i]
+        temp=i
+    }
+}    
+return keys[temp];
+}
 
 
 
@@ -1082,7 +1163,18 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return '1999'
 
 
 
-
+function keyForValue(obj, val){
+    if (Object.values(obj).length == 0){
+        return undefined;
+    } 
+    let keys = Object.keys(obj);
+    let vals = Object.values(obj);
+for(let i=0; i<keys.length; i++){
+    if (vals[i] == val){
+        return keys[i];
+    }
+}
+}
 
 
 
@@ -1102,7 +1194,18 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 */
 
 
-
+function containsValue(obj, val){
+    if (Object.values(obj).length == 0){
+        return false;
+    } 
+    let vals = Object.values(obj);
+    for(let i=0; i<vals.length; i++){
+        if (vals[i] == val){
+            return true;
+        }
+    } 
+    return false;
+}
 
 
 

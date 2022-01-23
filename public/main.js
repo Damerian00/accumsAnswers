@@ -853,10 +853,30 @@ If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 
 
 function toSentence(arr){
-console.log('this is arr', arr)
+ let phrase='';  
+if (arr.length == 0){
+    return '';
+}
 let len = arr.length -1
 arr.splice(len,0,'and')
-console.log('this is s', arr)
+for (let i=0; i<arr.length; i++){
+    let t;
+    if(i==0 ){
+        if ( i != len -1){
+            t = `${arr[i]}, `
+        }else{
+            t = `${arr[i]} `
+        }
+    } else if (i === len || i ==len -1){
+      t = `${arr[i]} `;
+    }else if(i == arr.length - 1){
+        t = arr[i]
+    }else{
+        t = `${arr[i]}, `
+    }
+    phrase += t 
+}
+    return phrase;
 
 }
 
@@ -875,7 +895,14 @@ If you pass ["Sue", "Will"] it should return "SW"
 If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 */
 
+function acronym(arr){
+let b=[]
+    arr.forEach((a) => {
+        b.push(a[0]);
+    })
+return b.join('');
 
+}
 
 
 
@@ -896,7 +923,20 @@ If you pass [0,-3,2,5] it should return -3
 
 
 
-
+function min(arr){
+if (arr.length == 0 ){
+    return undefined;
+} else if (arr.length == 1){
+    return arr[0]
+}
+let min=0
+for (let i=0; i<arr.length;i++){
+    if (arr[i] < min){
+        min = arr[i]
+}
+} 
+    return min;
+}
 
 
 

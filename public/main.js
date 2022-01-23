@@ -1033,7 +1033,7 @@ if (Object.keys(obj).length == 0){
     let vals = Object.values(obj);
     for (let i=0; i < keys.length; i++){
         let ky = `${keys[i]}-signed`
-        let val = `${vals[i]} -${name}`
+        let val = `${vals[i]} - ${name}`
         a[ky] = val;
         console.log('this is the a',a)
 // I'm leaving the console.log in to show it's correct.
